@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function setdata(){
+            var mydata = {
+                name: "DR",
+                gender: "male"
+            }
+            var userdata = JSON.stringify(mydata)
+            localStorage.setItem("userdata", userdata)
+            localStorage.setItem('name', 'Dhruvil')
+            document.getElementById('myid').innerHTML = "data saved";
+        }
+        function getdata(){
+            if(localStorage.getItem("name")){
+                var a = localStorage.getItem('name')
+                var b = localStorage.getItem('userdata')
+                var c = JSON.parse(userdata)
+                document.getElementById("myid").innerHTML = c.name + " " + c.gender;
+            }
+            else{
+                document.getElementById("myid").innerHTML = "no data"
+            }
+        }
+        function removedata(){
+            localStorage.removeItem('name')
+            localStorage.clear();
+            document.getElementById("myid").innerHTML = "data removed"
+        }
+    </script>
+</head>
+<body>
+    <div id="myid"></div>
+    <input type="button" value="set" onclick="setdata()">
+    <input type="button" value="get" onclick="getdata()">
+    <input type="button" value="remove" onclick="removedata()">
+</body>
+</html>
